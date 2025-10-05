@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couple Name Hashtag Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💑 Couple Name Hashtag Maker</h1>
+            <p class="subtitle">Create unique hashtags for your love story</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="partner1">Partner 1 Name</label>
+                    <input type="text" id="partner1" placeholder="e.g., Randeep" autocomplete="off">
+                </div>
+                <div class="input-group">
+                    <label for="partner2">Partner 2 Name</label>
+                    <input type="text" id="partner2" placeholder="e.g., Deepika" autocomplete="off">
+                </div>
+                <button id="generateBtn" class="generate-btn">✨ Generate Hashtags</button>
+            </div>
+
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <h2>Your Couple Hashtags</h2>
+                <div id="hashtagList" class="hashtag-list"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ for couples everywhere</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
