@@ -47,7 +47,7 @@ const Sitemap = () => {
             <li>✨ Generate hundreds of unique hashtag combinations</li>
             <li>🔥 View trending couple hashtags</li>
             <li>📋 Copy hashtags with one click</li>
-            <li>📱 Share directly to social media (Instagram, WhatsApp, Twitter/X)</li>
+            <li>📱 Share directly to social media (Instagram, WhatsApp, Twitter/X, Arattai)</li>
             <li>💯 Completely free to use</li>
           </ul>
         </section>
@@ -59,6 +59,7 @@ const Sitemap = () => {
             <li>📸 Instagram</li>
             <li>💬 WhatsApp</li>
             <li>🐦 Twitter/X</li>
+            <li>💭 Arattai</li>
           </ul>
         </section>
 

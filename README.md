@@ -10,7 +10,7 @@ Generate creative and unique couple name hashtags for weddings, engagements, and
   - Creative combinations (e.g., #RanDee)
   - Modifier additions (e.g., #RanjeetDeepaLove, #ForeverRanjeet)
 - **One-Click Copy**: Easily copy hashtags to clipboard
-- **Social Sharing**: Share directly to Instagram, WhatsApp, and Twitter/X
+- **Social Sharing**: Share directly to Instagram, WhatsApp, Twitter/X, and Arattai
 - **Responsive Design**: Works perfectly on mobile, tablet, and desktop
 - **PWA Support**: Install as a mobile app on your device
 - **Beautiful UI**: Modern design with smooth animations using Framer Motion

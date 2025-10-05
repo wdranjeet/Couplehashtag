@@ -92,6 +92,11 @@ const HashtagGenerator = () => {
         url = `https://twitter.com/intent/tweet?text=${text}`;
         window.open(url, '_blank');
         break;
+      case 'arattai':
+        // Arattai sharing - copy to clipboard as it doesn't have a web share URL
+        copyToClipboard(tag);
+        alert('Hashtag copied! Open Arattai to paste it.');
+        break;
       default:
         break;
     }
@@ -232,6 +237,14 @@ const HashtagGenerator = () => {
                           onClick={() => shareOnSocial('twitter', tag)}
                         >
                           🐦 Twitter/X
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          className="dropdown-item"
+                          onClick={() => shareOnSocial('arattai', tag)}
+                        >
+                          💭 Arattai
                         </button>
                       </li>
                     </ul>

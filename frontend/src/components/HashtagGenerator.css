@@ -103,7 +103,7 @@
   transition: all 0.3s ease;
   border: 2px solid transparent;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hashtag-card::before {
@@ -162,6 +162,7 @@
   box-shadow: 0 8px 20px rgba(233, 30, 99, 0.25);
   padding: 0.5rem 0;
   min-width: 150px;
+  z-index: 1000;
 }
 
 .dropdown-item {
