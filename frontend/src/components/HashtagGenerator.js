@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import './HashtagGenerator.css';
 import hashtagGenerator from '../utils/hashtagGenerator';
@@ -6,10 +6,37 @@ import hashtagGenerator from '../utils/hashtagGenerator';
 const HashtagGenerator = () => {
   const [name1, setName1] = useState('');
   const [name2, setName2] = useState('');
-  const [hashtags, setHashtags] = useState([]);
+  const [allHashtags, setAllHashtags] = useState([]);
+  const [displayedHashtags, setDisplayedHashtags] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(10);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [copiedTag, setCopiedTag] = useState('');
+
+  // Load more hashtags when scrolling
+  const handleScroll = useCallback(() => {
+    if (allHashtags.length === 0) return;
+    
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    
+    // Load more when user scrolls to 80% of the page
+    if (scrollTop + clientHeight >= scrollHeight * 0.8) {
+      if (visibleCount < allHashtags.length) {
+        setVisibleCount(prev => Math.min(prev + 10, allHashtags.length));
+      }
+    }
+  }, [allHashtags.length, visibleCount]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  useEffect(() => {
+    setDisplayedHashtags(allHashtags.slice(0, visibleCount));
+  }, [allHashtags, visibleCount]);
 
   const generateHashtags = async (e) => {
     e.preventDefault();
@@ -21,14 +48,16 @@ const HashtagGenerator = () => {
 
     setLoading(true);
     setError('');
-    setHashtags([]);
+    setAllHashtags([]);
+    setDisplayedHashtags([]);
+    setVisibleCount(10);
 
     // Simulate a small delay for better UX (makes it feel like processing)
     setTimeout(() => {
       const result = hashtagGenerator.generateHashtags(name1, name2);
 
       if (result.success) {
-        setHashtags(result.hashtags);
+        setAllHashtags(result.hashtags);
       } else {
         setError(result.error || 'Failed to generate hashtags');
       }
@@ -86,23 +115,23 @@ const HashtagGenerator = () => {
       >
         <div className="row g-3">
           <div className="col-md-6">
-            <label htmlFor="name1" className="form-label">Partner 1 Name</label>
+            <label htmlFor="name1" className="form-label">Your Name</label>
             <input
               type="text"
               className="form-control form-control-lg"
               id="name1"
-              placeholder="Enter first name"
+              placeholder="Enter your name"
               value={name1}
               onChange={(e) => setName1(e.target.value)}
             />
           </div>
           <div className="col-md-6">
-            <label htmlFor="name2" className="form-label">Partner 2 Name</label>
+            <label htmlFor="name2" className="form-label">Your Partner Name</label>
             <input
               type="text"
               className="form-control form-control-lg"
               id="name2"
-              placeholder="Enter second name"
+              placeholder="Enter partner's name"
               value={name2}
               onChange={(e) => setName2(e.target.value)}
             />
@@ -135,21 +164,24 @@ const HashtagGenerator = () => {
         </motion.div>
       )}
 
-      {hashtags.length > 0 && (
+      {displayedHashtags.length > 0 && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="results mt-4"
         >
-          <h3 className="results-title">Your Hashtag Suggestions</h3>
+          <h3 className="results-title">
+            Your Hashtag Suggestions 
+            <span className="hashtag-count"> ({displayedHashtags.length} of {allHashtags.length})</span>
+          </h3>
           <div className="hashtags-grid">
-            {hashtags.map((tag, index) => (
+            {displayedHashtags.map((tag, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
+                transition={{ delay: index * 0.02, duration: 0.3 }}
                 className="hashtag-card"
               >
                 <span className="hashtag-text">{tag}</span>
@@ -201,6 +233,15 @@ const HashtagGenerator = () => {
               </motion.div>
             ))}
           </div>
+          {visibleCount < allHashtags.length && (
+            <motion.div 
+              className="text-center mt-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <p className="load-more-text">Scroll down to load more hashtags...</p>
+            </motion.div>
+          )}
         </motion.div>
       )}
     </div>

@@ -8,7 +8,36 @@ class HashtagGenerator {
     this.modifiers = [
       'Love', 'Forever', 'Together', 'CoupleGoals', 'Couple',
       'Wedding', 'Married', 'Hearts', 'Romance', 'Soulmates',
-      'BetterTogether', 'TrueLove', 'MyLove', 'ForeverLove'
+      'BetterTogether', 'TrueLove', 'MyLove', 'ForeverLove',
+      'WeddingBells', 'EngagementVibes', 'HappilyEverAfter', 'TogetherForever',
+      'InLove', 'SweetLove', 'OurLoveStory', 'LoveWins', 'PerfectMatch',
+      'MadeForEachOther', 'Beloved', 'Sweetheart', 'Darling', 'MyEverything',
+      'ForeverYours', 'TrueLoveStory', 'HeartAndSoul', 'MyWorld', 'BestFriend',
+      'PartnerInCrime', 'LifePartner', 'AlwaysAndForever', 'Lovebirds', 'SoulmateForever',
+      'WeddingDay', 'JustMarried', 'EngagedLife', 'BrideAndGroom', 'NewlywedBliss',
+      'CoupleTime', 'Relationship', 'DateNight', 'Anniversary', 'ValentinesDay',
+      'LoveStruck', 'AdoreYou', 'MyHeart', 'Dreamcatcher', 'MagicMoment',
+      'PerfectPair', 'DynamicDuo', 'TwoHearts', 'OneHeart', 'UnbreakableBond',
+      'EndlessLove', 'EternalLove', 'TimelessLove', 'UnconditionalLove', 'PureLove',
+      'RomanceGoals', 'RelationshipGoals', 'CoupleLife', 'TogetherAlways', 'NeverApart',
+      'MyRock', 'MyAnchor', 'MyLight', 'MySunshine', 'MyMoon',
+      'WeddingVibes', 'EngagementBliss', 'MarriedLife', 'HappilyMarried', 'LoveAndHappiness'
+    ];
+    
+    this.prefixes = [
+      'Team', 'The', 'Mr', 'Mrs', 'Squad', 'Crew', 
+      'Official', 'Forever', 'Power', 'Love', 'Sweet'
+    ];
+    
+    this.suffixes = [
+      '4Ever', '2024', '2025', 'Forever', 'Always', 'Vibes',
+      'Goals', 'Life', 'Time', 'Love', 'Story', 'Journey',
+      'Adventures', 'Magic', 'Dreams', 'Moments', 'Memories'
+    ];
+    
+    this.trendingWords = [
+      'Aesthetic', 'Mood', 'Era', 'Energy', 'Vibes', 'Core',
+      'Main', 'Soft', 'Golden', 'Dreamy', 'Epic', 'Iconic'
     ];
   }
 
@@ -78,7 +107,7 @@ class HashtagGenerator {
     
     // Add modifiers to combinations
     combinations.forEach(combo => {
-      this.modifiers.slice(0, 5).forEach(modifier => {
+      this.modifiers.forEach(modifier => {
         hashtags.push(`#${combo}${modifier}`);
       });
     });
@@ -87,6 +116,24 @@ class HashtagGenerator {
     this.modifiers.forEach(modifier => {
       hashtags.push(`#${name1}${modifier}`);
       hashtags.push(`#${name2}${modifier}`);
+    });
+    
+    // Add prefixes
+    this.prefixes.forEach(prefix => {
+      hashtags.push(`#${prefix}${name1}${name2}`);
+      hashtags.push(`#${prefix}${name2}${name1}`);
+    });
+    
+    // Add suffixes
+    this.suffixes.forEach(suffix => {
+      hashtags.push(`#${name1}${name2}${suffix}`);
+      hashtags.push(`#${name2}${name1}${suffix}`);
+    });
+    
+    // Add trending combinations
+    this.trendingWords.forEach(trend => {
+      hashtags.push(`#${name1}${name2}${trend}`);
+      hashtags.push(`#${trend}${name1}${name2}`);
     });
     
     return hashtags;
@@ -118,8 +165,8 @@ class HashtagGenerator {
       allHashtags.add(tag);
     });
     
-    // Convert to array and limit to top suggestions
-    const hashtags = Array.from(allHashtags).slice(0, 30);
+    // Convert to array - don't limit, we want at least 100
+    const hashtags = Array.from(allHashtags);
     
     return {
       success: true,
