@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import './HashtagGenerator.css';
 import hashtagGenerator from '../utils/hashtagGenerator';
+import TrendingHashtags from './TrendingHashtags';
 
 const HashtagGenerator = () => {
   const [name1, setName1] = useState('');
@@ -12,6 +13,7 @@ const HashtagGenerator = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [copiedTag, setCopiedTag] = useState('');
+  const [showTrending, setShowTrending] = useState(true);
 
   // Load more hashtags when scrolling
   const handleScroll = useCallback(() => {
@@ -51,6 +53,7 @@ const HashtagGenerator = () => {
     setAllHashtags([]);
     setDisplayedHashtags([]);
     setVisibleCount(10);
+    setShowTrending(false); // Hide trending hashtags when generating
 
     // Simulate a small delay for better UX (makes it feel like processing)
     setTimeout(() => {
@@ -162,6 +165,10 @@ const HashtagGenerator = () => {
         >
           {error}
         </motion.div>
+      )}
+
+      {showTrending && displayedHashtags.length === 0 && (
+        <TrendingHashtags />
       )}
 
       {displayedHashtags.length > 0 && (

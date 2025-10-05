@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6090;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e91e63;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#fff0f5" stroke="url(#heartGradient)" stroke-width="4"/>
+  
+  <!-- Heart shape -->
+  <path d="M50,75 C50,75 20,55 20,40 C20,30 27,25 33,25 C40,25 45,30 50,37 C55,30 60,25 67,25 C73,25 80,30 80,40 C80,55 50,75 50,75 Z" 
+        fill="url(#heartGradient)"/>
+  
+  <!-- Hashtag symbol -->
+  <g transform="translate(50, 50) scale(0.4)">
+    <rect x="-25" y="-8" width="12" height="50" fill="white" transform="rotate(-10)"/>
+    <rect x="5" y="-8" width="12" height="50" fill="white" transform="rotate(-10)"/>
+    <rect x="-30" y="-5" width="50" height="10" fill="white" transform="rotate(-10)"/>
+    <rect x="-30" y="15" width="50" height="10" fill="white" transform="rotate(-10)"/>
+  </g>
+</svg>
