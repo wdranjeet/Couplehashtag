@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import './HashtagGenerator.css';
+import hashtagGenerator from '../utils/hashtagGenerator';
 
 const HashtagGenerator = () => {
   const [name1, setName1] = useState('');
@@ -9,8 +10,6 @@ const HashtagGenerator = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [copiedTag, setCopiedTag] = useState('');
-
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
   const generateHashtags = async (e) => {
     e.preventDefault();
@@ -24,27 +23,18 @@ const HashtagGenerator = () => {
     setError('');
     setHashtags([]);
 
-    try {
-      const response = await fetch(`${API_URL}/api/generateHashtags`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name1, name2 }),
-      });
+    // Simulate a small delay for better UX (makes it feel like processing)
+    setTimeout(() => {
+      const result = hashtagGenerator.generateHashtags(name1, name2);
 
-      const data = await response.json();
-
-      if (data.success) {
-        setHashtags(data.hashtags);
+      if (result.success) {
+        setHashtags(result.hashtags);
       } else {
-        setError(data.error || 'Failed to generate hashtags');
+        setError(result.error || 'Failed to generate hashtags');
       }
-    } catch (err) {
-      setError('Failed to connect to server. Please try again.');
-    } finally {
+      
       setLoading(false);
-    }
+    }, 500);
   };
 
   const copyToClipboard = (tag) => {
