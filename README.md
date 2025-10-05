@@ -36,47 +36,51 @@ Generate creative and unique couple name hashtags for weddings, engagements, and
 
 ## 📦 Installation & Setup
 
-### Prerequisites
+> **For detailed step-by-step installation instructions, see [INSTALLATION.md](INSTALLATION.md)**
+
+### Quick Start
+
+#### Prerequisites
 - Node.js (v14 or higher)
 - npm (v6 or higher)
 
-### Backend Setup
+#### Using the Start Script (Linux/Mac)
+```bash
+git clone https://github.com/wdranjeet/Couplehashtag.git
+cd Couplehashtag
+chmod +x start.sh
+./start.sh
+```
 
-1. Navigate to the backend directory:
+#### Manual Installation (All Platforms)
+
+**Backend Setup:**
 ```bash
 cd backend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
-
-3. Start the backend server:
-```bash
 npm start
 ```
-
 The backend API will run on `http://localhost:5000`
 
-### Frontend Setup
-
-1. Navigate to the frontend directory:
+**Frontend Setup:**
 ```bash
 cd frontend
-```
-
-2. Install dependencies:
-```bash
 npm install
-```
-
-3. Start the development server:
-```bash
 npm start
 ```
-
 The frontend will run on `http://localhost:3000`
+
+### Deploy to Netlify (No Backend Required)
+
+1. Fork/clone this repository
+2. Connect to Netlify
+3. Set build settings:
+   - **Base directory:** `frontend`
+   - **Build command:** `npm run build`
+   - **Publish directory:** `frontend/build`
+4. Deploy!
+
+The `_redirects` file and `netlify.toml` configuration are already included to prevent "broken link" errors.
 
 ## 🚀 Usage
 
