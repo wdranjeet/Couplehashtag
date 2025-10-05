@@ -123,10 +123,11 @@
 }
 
 .hashtag-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.25);
+  transform: translateY(-8px) scale(1.08);
+  box-shadow: 0 12px 35px rgba(233, 30, 99, 0.35);
   border-color: #e91e63;
   background: linear-gradient(135deg, #ffffff 0%, #ffe4f0 100%);
+  z-index: 10;
 }
 
 .hashtag-text {
@@ -136,16 +137,12 @@
   word-break: break-word;
   text-shadow: 0 2px 4px rgba(233, 30, 99, 0.1);
   letter-spacing: 0.5px;
-  animation: pulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.85;
-  }
+.hashtag-card:hover .hashtag-text {
+  font-size: 1.65rem;
+  text-shadow: 0 3px 8px rgba(233, 30, 99, 0.3);
 }
 
 .hashtag-actions {
@@ -156,6 +153,28 @@
 .hashtag-actions .btn {
   flex: 1;
   font-size: 0.85rem;
+}
+
+.dropdown-menu {
+  background: white;
+  border: 2px solid #e91e63;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(233, 30, 99, 0.25);
+  padding: 0.5rem 0;
+  min-width: 150px;
+}
+
+.dropdown-item {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #ffe4f0 0%, #fff5f9 100%);
+  color: #e91e63;
+  padding-left: 1.5rem;
 }
 
 .hashtag-count {
