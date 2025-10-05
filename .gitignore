@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+build/
+*.log
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+/tmp/
+*.tmp
+
+# Test coverage
+coverage/
+
+# Production
+/frontend/build
+
+# Misc
+.cache/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
