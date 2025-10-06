@@ -6,7 +6,8 @@ This guide covers different deployment options for the Couple Name Hashtag Maker
 1. [Local Development](#local-development)
 2. [Docker Deployment](#docker-deployment)
 3. [Cloud Deployment](#cloud-deployment)
-4. [Environment Variables](#environment-variables)
+4. [Mobile App Deployment](#mobile-app-deployment)
+5. [Environment Variables](#environment-variables)
 
 ## Local Development
 
@@ -192,6 +193,75 @@ gcloud run deploy couple-hashtag-api \
   --region us-central1 \
   --allow-unauthenticated
 ```
+
+## Mobile App Deployment
+
+### Android App (Google Play Store & Indus AppStore)
+
+The **mobile** directory contains a complete setup for building and publishing the app to Android app stores.
+
+#### Prerequisites
+
+- Node.js (v14+)
+- Java JDK (v11 or v17)
+- Android SDK
+- Android Studio (recommended)
+
+#### Quick Build AAB
+
+```bash
+cd mobile
+npm install
+npm run build:all
+cd android
+./gradlew bundleRelease
+```
+
+**Output:** `mobile/android/app/build/outputs/bundle/release/app-release.aab`
+
+#### For Production Release
+
+1. **Create a keystore** (first time only):
+   ```bash
+   cd mobile/android
+   keytool -genkey -v -keystore couplehashtag-release-key.jks \
+     -keyalg RSA -keysize 2048 -validity 10000 \
+     -alias couplehashtag-key
+   ```
+
+2. **Configure signing** - Create `mobile/android/keystore.properties`:
+   ```properties
+   RELEASE_STORE_FILE=couplehashtag-release-key.jks
+   RELEASE_STORE_PASSWORD=your_password
+   RELEASE_KEY_ALIAS=couplehashtag-key
+   RELEASE_KEY_PASSWORD=your_password
+   ```
+
+3. **Build signed AAB**:
+   ```bash
+   cd mobile/android
+   ./gradlew bundleRelease
+   ```
+
+#### Publishing
+
+**Google Play Store:**
+1. Create developer account at https://play.google.com/console ($25 fee)
+2. Create new app and complete store listing
+3. Upload the AAB file
+4. Submit for review
+
+**Indus AppStore:**
+1. Create developer account at https://indusappstore.com/developer
+2. Upload the AAB file
+3. Submit for review
+
+#### Documentation
+
+For detailed instructions, see:
+- **[mobile/AAB_BUILD_GUIDE.md](mobile/AAB_BUILD_GUIDE.md)** - Complete AAB build and publishing guide
+- **[mobile/QUICK_START.md](mobile/QUICK_START.md)** - Quick reference
+- **[mobile/README.md](mobile/README.md)** - Mobile directory overview
 
 ## Environment Variables
 

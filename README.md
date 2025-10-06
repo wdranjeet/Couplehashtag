@@ -13,6 +13,7 @@ Generate creative and unique couple name hashtags for weddings, engagements, and
 - **Social Sharing**: Share directly to Instagram, WhatsApp, Twitter/X, and Arattai
 - **Responsive Design**: Works perfectly on mobile, tablet, and desktop
 - **PWA Support**: Install as a mobile app on your device
+- **Android App**: Build AAB for Google Play Store & Indus AppStore
 - **Beautiful UI**: Modern design with smooth animations using Framer Motion
 - **Trending Analytics**: Track popular hashtags (backend feature)
 
@@ -167,6 +168,39 @@ The app can be installed as a Progressive Web App on mobile devices:
 1. Open the app in your mobile browser
 2. Look for the "Add to Home Screen" prompt
 3. Install and use like a native app!
+
+## 📱 Android App (AAB for Google Play Store & Indus AppStore)
+
+Want to publish the app on Google Play Store or Indus AppStore? We've got you covered!
+
+The **mobile** directory contains everything you need to generate an Android App Bundle (AAB) file for publishing on app stores.
+
+### Quick Build
+
+```bash
+cd mobile
+npm install
+npm run build:all
+cd android
+./gradlew bundleRelease
+```
+
+The AAB file will be at: `mobile/android/app/build/outputs/bundle/release/app-release.aab`
+
+### Documentation
+
+- **[mobile/AAB_BUILD_GUIDE.md](mobile/AAB_BUILD_GUIDE.md)** - Complete guide for building AAB and publishing to app stores
+- **[mobile/QUICK_START.md](mobile/QUICK_START.md)** - Quick reference guide
+- **[mobile/README.md](mobile/README.md)** - Mobile directory documentation
+
+### Requirements
+
+- Node.js (v14+)
+- Java JDK (v11 or v17)
+- Android SDK
+- Android Studio (recommended)
+
+See the [mobile/AAB_BUILD_GUIDE.md](mobile/AAB_BUILD_GUIDE.md) for detailed setup instructions and publishing guidelines.
 
 ## 🎨 Customization
 
