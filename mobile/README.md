@@ -39,6 +39,9 @@ The AAB file will be at: `android/app/build/outputs/bundle/release/app-release.a
 
 - **[AAB_BUILD_GUIDE.md](./AAB_BUILD_GUIDE.md)** - Complete guide for generating AAB files and publishing to app stores
 - **[QUICK_START.md](./QUICK_START.md)** - Quick reference for common tasks
+- **[APP_STORE_CHECKLIST.md](./APP_STORE_CHECKLIST.md)** - Comprehensive checklist for app store submission
+- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)** - Solutions to common build issues
+- **[BUILD_VERIFICATION.md](./BUILD_VERIFICATION.md)** - Build verification notes
 
 ## 🛠️ Available NPM Scripts
 
