@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Couple Hashtag Maker</string>
+    <string name="title_activity_main">Couple Hashtag Maker</string>
+    <string name="package_name">com.couplehashtag.app</string>
+    <string name="custom_url_scheme">com.couplehashtag.app</string>
+</resources>

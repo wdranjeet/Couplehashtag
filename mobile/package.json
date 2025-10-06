@@ -1,0 +1,22 @@
+{
+  "name": "couple-hashtag-mobile",
+  "version": "1.0.0",
+  "description": "Couple Hashtag Maker - Mobile Android App",
+  "main": "index.js",
+  "scripts": {
+    "build:frontend": "cd ../frontend && npm run build",
+    "sync": "npx cap sync android",
+    "open:android": "npx cap open android",
+    "copy": "npx cap copy android",
+    "update": "npx cap update android",
+    "build:all": "npm run build:frontend && npm run sync"
+  },
+  "keywords": ["couple", "hashtag", "wedding", "mobile"],
+  "author": "Couple Hashtag Team",
+  "license": "GPL-2.0",
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3"
+  }
+}

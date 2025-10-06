@@ -1,0 +1,9 @@
+{
+  "appId": "com.couplehashtag.app",
+  "appName": "Couple Hashtag Maker",
+  "webDir": "../frontend/build",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  }
+}
